@@ -18,7 +18,7 @@ const Results = async ({ profileUrl }: Props) => {
           <p className="text-lg font-bold tracking-tight lg:text-xl">
             {data.game_count} games in library
           </p>
-          <p className="text-md tracking-tight lg:text-lg">
+          <p className="tracking-tight text-md text-muted-foreground">
             {createPlaytimeSummary(data.total_playtime).join(", ")} total
             playtime
           </p>
