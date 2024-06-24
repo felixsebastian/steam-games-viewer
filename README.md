@@ -38,6 +38,10 @@ The steam API doesn't seem to give us much useful error information. The main re
 
 The error boundary is also very bare bones and could be improved so that if there's a bug in the frontend somewhere at least we can show a nice message.
 
+## Suggested titles
+
+A really cool feature to add to this would be a suggestion engine. We already know which games the user loves to play the most, and we could integrate with open AI to suggest similar games.
+
 ## About this repo
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
