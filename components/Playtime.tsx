@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Playtime = (props: Props) => {
-  const items = createPlaytimeSummary(props.minutes);
+  const items = createPlaytimeSummary(props.minutes, true);
   if (!items.length) return <Badge>Never played</Badge>;
   return <Badge>{items.join(" ")} played</Badge>;
 };
