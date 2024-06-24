@@ -1,11 +1,11 @@
 import { PropsWithParams } from "@/lib/types";
 import ProfileUrlForm from "@/components/ProfileUrlForm";
 import Results from "@/components/Results";
-import base64 from "base-64";
+import { decodeProfileUrl } from "@/lib/encoding";
 
 const Page = async (props: PropsWithParams) => {
   const { profileUrl } = props.params;
-  const decoded = base64.decode(profileUrl);
+  const decoded = decodeProfileUrl(profileUrl);
 
   return (
     <>

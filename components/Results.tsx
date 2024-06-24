@@ -1,4 +1,3 @@
-import { PropsWithParams } from "@/lib/types";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import HelpText from "./HelpText";
 import createPlaytimeSummary from "@/lib/createPlaytimeSummary";
@@ -32,15 +31,16 @@ const Results = async ({ profileUrl }: Props) => {
       </div>
     );
   } catch (error: unknown) {
-    if (typeof error === "object")
-      return (
-        <Alert>
-          <AlertTitle>Could not analyse steam account</AlertTitle>
-          <AlertDescription>
-            Make sure the profile URL is correct. <HelpText />
-          </AlertDescription>
-        </Alert>
-      );
+    if (typeof error !== "object") throw error;
+
+    return (
+      <Alert>
+        <AlertTitle>Could not analyse steam account</AlertTitle>
+        <AlertDescription>
+          Make sure the profile URL is correct. <HelpText />
+        </AlertDescription>
+      </Alert>
+    );
   }
 };
 
