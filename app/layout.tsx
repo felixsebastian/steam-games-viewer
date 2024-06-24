@@ -20,13 +20,11 @@ export default function RootLayout({
     <Providers>
       <html lang="en">
         <body className={inter.className}>
-          <main className="grid place-items-center">
-            <div className="grid gap-12 py-12 max-w-4xl">
-              <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
-                Steam Library Analyser
-              </h1>
-              {children}
-            </div>
+          <main className="max-w-4xl mx-auto p-8 grid gap-8">
+            <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
+              Steam Library Analyser
+            </h1>
+            {children}
           </main>
         </body>
       </html>
