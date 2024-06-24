@@ -67,7 +67,7 @@ const ProfileUrlForm = ({ profileUrl = "" }: Props) => {
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Analysing
               </Button>
             ) : (
-              <Button>Analyse</Button>
+              <Button>An͛alys͎̾e ≥</Button>
             )}
           </div>
           <FormDescription>
