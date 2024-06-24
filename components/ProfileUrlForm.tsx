@@ -18,6 +18,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 import { HelpCircleIcon, Loader2 } from "lucide-react";
 import profileUrlSchema from "@/lib/profileUrlSchema";
+import base64 from "base-64";
 
 const formSchema = z.object({ profileUrl: profileUrlSchema });
 
@@ -37,7 +38,7 @@ const ProfileUrlForm = ({ profileUrl = "" }: Props) => {
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     if (values.profileUrl === profileUrl) return;
     setPending(true);
-    router.push(`/${encodeURIComponent(values.profileUrl)}`);
+    router.push(`/${base64.encode(values.profileUrl)}`);
   };
 
   useEffect(() => {
