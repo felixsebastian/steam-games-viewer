@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 import HelpCard from "./HelpCard";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
-import { HelpCircleIcon, Loader2, Terminal } from "lucide-react";
+import { HelpCircleIcon, Loader2 } from "lucide-react";
 import profileUrlSchema from "@/lib/profileUrlSchema";
 import { encodeProfileUrl } from "@/lib/encoding";
 
