@@ -17,17 +17,9 @@ import HelpCard from "./HelpCard";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 import { HelpCircleIcon, Loader2 } from "lucide-react";
+import steamIdSchema from "@/lib/steamIdSchema";
 
-const formSchema = z.object({
-  steamid: z
-    .string()
-    .regex(/^[0-9]*$/, {
-      message: "Should only contain numbers",
-    })
-    .min(6, {
-      message: "Should be at lest 6 digits",
-    }),
-});
+const formSchema = z.object({ steamid: steamIdSchema });
 
 interface Props {
   steamid?: string;
