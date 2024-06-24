@@ -1,26 +1,15 @@
-import { GamesResponse, PropsWithParams } from "@/lib/types";
+import { PropsWithParams } from "@/lib/types";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import HelpText from "./HelpText";
 import createPlaytimeSummary from "@/lib/createPlaytimeSummary";
 import GameCard from "./GameCard";
-
-class FailedToFetchError extends Error {}
-
-const getData = async (steamid: string) => {
-  const res = await fetch(
-    "http://localhost:3000/api/games?" + new URLSearchParams({ steamid }),
-  );
-
-  if (!res.ok) throw new FailedToFetchError("failed to fetch games");
-  const json: GamesResponse = await res.json();
-  return json;
-};
+import fetchGames from "@/lib/fetchGames";
 
 const Results = async (props: PropsWithParams) => {
   const { steamid } = props.params;
 
   try {
-    const data = await getData(steamid);
+    const data = await fetchGames(steamid);
 
     return (
       <div className="grid gap-4">

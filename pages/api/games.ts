@@ -29,6 +29,6 @@ export default async function handler(
   res.status(200).json({
     game_count,
     total_playtime: sum(games.map((g) => g.playtime_forever)),
-    games: orderedGames.slice(0, 4),
+    games: orderedGames,
   });
 }

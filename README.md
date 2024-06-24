@@ -21,6 +21,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - friendly errors
 - sorting and pagination
 - account with no games or no total playtime
+- pagination
+- dark mode
+- loading and empty states
+- layout shift
 
 ## More info
 
