@@ -1,7 +1,7 @@
-import SteamIdForm from "@/components/SteamIdForm";
+import ProfileUrlForm from "@/components/ProfileUrlForm";
 
 const Page = async () => {
-  return <SteamIdForm />;
+  return <ProfileUrlForm />;
 };
 
 export default Page;

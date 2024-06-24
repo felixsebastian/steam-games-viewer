@@ -1,9 +1,8 @@
 const HelpText = () => (
   <>
-    To find your steam ID, click on your <b>player name</b> in the top-right
-    hand side of steam and choose <b>Account details</b> from the menu. You will
-    see <b>Steam ID</b> just below your username, which should contain only
-    numbers.
+    To find your profile URL, login to steam via your browser and click on your
+    avatar image in the top right. Then copy the whole URL and paste it in the
+    field above.
   </>
 );
 

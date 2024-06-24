@@ -5,11 +5,13 @@ import createPlaytimeSummary from "@/lib/createPlaytimeSummary";
 import GameCard from "./GameCard";
 import fetchGames from "@/lib/fetchGames";
 
-const Results = async (props: PropsWithParams) => {
-  const { steamid } = props.params;
+interface Props {
+  profileUrl: string;
+}
 
+const Results = async ({ profileUrl }: Props) => {
   try {
-    const data = await fetchGames(steamid);
+    const data = await fetchGames(profileUrl);
 
     return (
       <div className="grid gap-4">
@@ -35,7 +37,7 @@ const Results = async (props: PropsWithParams) => {
         <Alert>
           <AlertTitle>Could not analyse steam account</AlertTitle>
           <AlertDescription>
-            Check the steam ID to make sure it is correct. <HelpText />
+            Make sure the profile URL is correct. <HelpText />
           </AlertDescription>
         </Alert>
       );

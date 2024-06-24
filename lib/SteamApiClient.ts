@@ -2,16 +2,31 @@ import { GetOwnedGamesResponse, SteamApiResponse } from "./types";
 
 const baseUrl = "http://api.steampowered.com";
 
-class SteamApiClient {
+export class SteamApiClient {
+  apiKey: string;
+
+  constructor(apiKey: string) {
+    this.apiKey = apiKey;
+  }
+
   baseFetch(endpoint: string, params?: Record<string, unknown>) {
     return fetch(
       `${baseUrl}${endpoint}?` +
         new URLSearchParams({
-          key: process.env.STEAM_API_KEY ?? "",
+          key: this.apiKey,
           format: "json",
           ...params,
         }),
     );
+  }
+
+  async getSteamIdFromVanityUrl(vanityurl: string) {
+    const response = await this.baseFetch(
+      "/ISteamUser/ResolveVanityURL/v0001/",
+      { vanityurl },
+    );
+
+    return await response.json();
   }
 
   async fetchGames(
@@ -29,5 +44,3 @@ class SteamApiClient {
     return await response.json();
   }
 }
-
-export default SteamApiClient;

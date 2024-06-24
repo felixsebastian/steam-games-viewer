@@ -14,10 +14,10 @@ jest.mock("../lib/SteamApiClient", () => {
 });
 
 describe("/api/games", () => {
-  describe("invalid steamid", () => {
+  describe("invalid profileUrl", () => {
     test("returns a 4XX error", async () => {
       const req = {
-        nextUrl: { search: "steamid=abc" },
+        nextUrl: { search: "profileUrl=abc" },
       } as NextRequest;
 
       const response = await GET(req);
@@ -25,10 +25,13 @@ describe("/api/games", () => {
     });
   });
 
-  describe("valid steamid", () => {
+  describe("valid profileUrl", () => {
     test("returns the data", async () => {
       const req = {
-        nextUrl: { search: "steamid=76561197960434622" },
+        nextUrl: {
+          search:
+            "profileUrl=https://steamcommunity.com/profiles/76561197960434622",
+        },
       } as NextRequest;
 
       const response = await GET(req);

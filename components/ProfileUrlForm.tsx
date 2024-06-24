@@ -17,41 +17,41 @@ import HelpCard from "./HelpCard";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 import { HelpCircleIcon, Loader2 } from "lucide-react";
-import steamIdSchema from "@/lib/steamIdSchema";
+import profileUrlSchema from "@/lib/profileUrlSchema";
 
-const formSchema = z.object({ steamid: steamIdSchema });
+const formSchema = z.object({ profileUrl: profileUrlSchema });
 
 interface Props {
-  steamid?: string;
+  profileUrl?: string;
 }
 
-const SteamIdForm = ({ steamid = "" }: Props) => {
+const ProfileUrlForm = ({ profileUrl = "" }: Props) => {
   const [pending, setPending] = useState(false);
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: { steamid },
+    defaultValues: { profileUrl },
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    if (values.steamid === steamid) return;
+    if (values.profileUrl === profileUrl) return;
     setPending(true);
-    router.push(`/${values.steamid}`);
+    router.push(`/${encodeURIComponent(values.profileUrl)}`);
   };
 
   useEffect(() => {
-    if (form.getValues().steamid == steamid) setPending(false);
-  }, [form, steamid]);
+    if (form.getValues().profileUrl == profileUrl) setPending(false);
+  }, [form, profileUrl]);
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="grid gap-2">
-          <FormLabel htmlFor="steamId">Steam ID</FormLabel>
+          <FormLabel htmlFor="profileUrl">Steam profile URL</FormLabel>
           <div className="flex flex-row gap-2">
             <FormField
-              name="steamid"
+              name="profileUrl"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
@@ -82,4 +82,4 @@ const SteamIdForm = ({ steamid = "" }: Props) => {
   );
 };
 
-export default SteamIdForm;
+export default ProfileUrlForm;
