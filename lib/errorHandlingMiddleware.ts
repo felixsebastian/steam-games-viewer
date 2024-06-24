@@ -1,15 +1,13 @@
-import { NextApiRequest, NextApiResponse } from "next";
-type Handler = (req: NextApiRequest, res: NextApiResponse) => void;
+import { NextRequest, NextResponse } from "next/server";
+
+type Handler = (req: NextRequest) => Promise<NextResponse>;
 
 const errorHandlingMiddleware =
-  (...handlers: Handler[]) =>
-  async (req: NextApiRequest, res: NextApiResponse) => {
+  (handler: Handler) => async (req: NextRequest) => {
     try {
-      for (const handler of handlers) {
-        await handler(req, res);
-      }
+      return await handler(req);
     } catch {
-      res.status(500).json({ error: "unknown_error" });
+      return NextResponse.json({ error: "unexpected error" }, { status: 500 });
     }
   };
 

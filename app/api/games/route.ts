@@ -1,25 +1,22 @@
 import SteamApiClient from "@/lib/SteamApiClient";
 import errorHandlingMiddleware from "@/lib/errorHandlingMiddleware";
+import getParamsObject from "@/lib/getParamsObject";
 import steamIdSchema from "@/lib/steamIdSchema";
-import { ApiResponse, GamesResponse } from "@/lib/types";
 import { orderBy, sum } from "lodash";
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 const steam = new SteamApiClient();
 const paramsSchema = z.object({ steamid: steamIdSchema });
+type Params = z.infer<typeof paramsSchema>;
 
-const handler = async (
-  req: NextApiRequest,
-  res: NextApiResponse<ApiResponse<GamesResponse>>,
-) => {
-  let params: z.infer<typeof paramsSchema>;
+const handler = async (req: NextRequest) => {
+  let params: Params;
 
   try {
-    params = paramsSchema.parse(req.query);
+    params = paramsSchema.parse(getParamsObject(req));
   } catch {
-    res.status(400).json({ error: "Invalid parameters" });
-    return;
+    return NextResponse.json({ error: "Invalid parameters" }, { status: 400 });
   }
 
   const {
@@ -34,13 +31,10 @@ const handler = async (
     ["desc", "asc"],
   );
 
-  res.status(200).json({
-    data: {
-      game_count,
-      total_playtime,
-      games: orderedGames,
-    },
-  });
+  return NextResponse.json(
+    { data: { game_count, total_playtime, games: orderedGames } },
+    { status: 200 },
+  );
 };
 
-export default errorHandlingMiddleware(handler);
+export const GET = errorHandlingMiddleware(handler);
