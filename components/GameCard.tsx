@@ -20,7 +20,7 @@ const GameCard = ({ game, mostPlayed }: Props) => (
           <CardTitle>
             <Tooltip>
               <TooltipTrigger>
-                <div className="text-left w-min max-w-80 block overflow-hidden whitespace-nowrap text-ellipsis">
+                <div className="text-left w-min max-w-80 block overflow-x-hidden leading-8 whitespace-nowrap text-ellipsis">
                   {game.name}
                 </div>
               </TooltipTrigger>
