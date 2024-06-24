@@ -18,7 +18,7 @@ const createPlaytimeSummary = (minutes: number) => {
     const value = d[next];
 
     if (value !== undefined && value > 0) {
-      result.push(`${d[next]} ${next}`);
+      result.push(`${d[next]}${next.slice(0, 1)}`);
     }
 
     return result;
