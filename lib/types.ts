@@ -28,3 +28,8 @@ export interface GamesResponse extends GetOwnedGamesResponse {
 export interface PropsWithParams {
   params: Params;
 }
+
+export interface ApiResponse<T> {
+  data?: T;
+  error?: string;
+}
