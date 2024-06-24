@@ -8,6 +8,8 @@ const steam = new SteamApiClient();
 
 const paramsSchema = z.object({
   steamid: z.string().min(2),
+  limit: z.coerce.number().lt(20),
+  offset: z.coerce.number(),
 });
 
 export default async function handler(
@@ -29,6 +31,6 @@ export default async function handler(
   res.status(200).json({
     game_count,
     total_playtime: sum(games.map((g) => g.playtime_forever)),
-    games: orderedGames.slice(0, 4),
+    games: orderedGames.slice(params.offset, params.offset + params.limit),
   });
 }
