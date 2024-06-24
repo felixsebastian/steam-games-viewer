@@ -18,10 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <Providers>
-      <html lang="en">
+      <html lang="en" className="dark">
         <body className={inter.className}>
           <main className="max-w-4xl mx-auto p-8 grid gap-8">
-            <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
+            <h1 className="text-3xl font-extrabold tracking-tight lg:text-6xl">
               Steam Library Analyser
             </h1>
             {children}
