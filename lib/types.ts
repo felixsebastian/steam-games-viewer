@@ -4,6 +4,7 @@ export interface OwnedGame {
   appid: number;
   name: string;
   img_icon_url: string;
+  most_played?: boolean;
   playtime_deck_forever: number;
   playtime_disconnected: number;
   playtime_forever: number;
@@ -29,7 +30,12 @@ export interface PropsWithParams {
   params: Params;
 }
 
+export interface ApiError {
+  code: string;
+  message: string;
+}
+
 export interface ApiResponse<T> {
   data?: T;
-  error?: string;
+  error?: ApiError;
 }

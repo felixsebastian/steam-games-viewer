@@ -9,10 +9,9 @@ import { TooltipContent } from "./ui/tooltip";
 
 interface Props {
   game: OwnedGame;
-  mostPlayed: boolean;
 }
 
-const GameCard = ({ game, mostPlayed }: Props) => (
+const GameCard = ({ game }: Props) => (
   <Card>
     <CardHeader>
       <div className="flex flex-row justify-between items-start">
@@ -31,7 +30,7 @@ const GameCard = ({ game, mostPlayed }: Props) => (
           </CardTitle>
           <div className="flex gap-2 flex-wrap">
             <Playtime minutes={game.playtime_forever} />
-            {mostPlayed && (
+            {game.most_played && (
               <Badge variant="outline">
                 <span className="flex gap-1 items-center">
                   <TrophyIcon size={12} /> Most played
