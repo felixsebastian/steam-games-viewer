@@ -1,6 +1,6 @@
 ## Demo
 
-Live at [https://steam-games-viewer.felixsebastian.dev/](https://steam-games-viewer.felixsebastian.dev/aHR0cHM6Ly9zdGVhbWNvbW11bml0eS5jb20vcHJvZmlsZXMvNzY1NjExOTc5NjA0MzQ2MjI%3D)
+Live at [https://steam-library-analyser.felixsebastian.dev/](https://steam-library-analyser.felixsebastian.dev/aHR0cHM6Ly9zdGVhbWNvbW11bml0eS5jb20vcHJvZmlsZXMvNzY1NjExOTc5NjA0MzQ2MjI%3D)
 
 ## Getting Started
 
