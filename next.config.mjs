@@ -3,13 +3,14 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'media.steampowered.com',
-        port: '',
-        pathname: '/steamcommunity/public/images/apps/**',
+        protocol: "http",
+        hostname: "media.steampowered.com",
+        port: "",
+        pathname: "/steamcommunity/public/images/apps/**",
       },
     ],
-  }
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
