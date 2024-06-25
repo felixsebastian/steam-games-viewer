@@ -4,6 +4,8 @@ Live at [https://steam-games-viewer.felixsebastian.dev/](https://steam-games-vie
 
 ## Getting Started
 
+To run locally, you first need to [obtain a steam API key from here](https://steamcommunity.com/login/home/?goto=%2Fdev%2Fapikey). Copy the file `.env.example` as `.env.local` and update the `STEAM_API_KEY` to be your own key.
+
 Install packages:
 
 ```bash
