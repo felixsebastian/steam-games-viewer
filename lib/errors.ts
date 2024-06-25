@@ -35,9 +35,7 @@ export class ServerError extends Error {
   }
 
   public getResponse() {
-    return NextResponse.json(
-      { code: this._code, message: this.message },
-      { status: this._status },
-    );
+    const error = { code: this._code, message: this.message };
+    return NextResponse.json({ error }, { status: this._status });
   }
 }

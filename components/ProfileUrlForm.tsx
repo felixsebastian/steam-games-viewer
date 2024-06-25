@@ -12,13 +12,13 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
 import HelpCard from "./HelpCard";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 import { HelpCircleIcon, Loader2 } from "lucide-react";
 import profileUrlSchema from "@/lib/profileUrlSchema";
 import { encodeProfileUrl } from "@/lib/encoding";
+import useResults from "@/lib/client/useResults";
 
 const formSchema = z.object({ profileUrl: profileUrlSchema });
 
@@ -27,7 +27,7 @@ interface Props {
 }
 
 const ProfileUrlForm = ({ profileUrl = "" }: Props) => {
-  const [pending, setPending] = useState(false);
+  const { isLoading } = useResults(profileUrl);
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -37,13 +37,8 @@ const ProfileUrlForm = ({ profileUrl = "" }: Props) => {
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     if (values.profileUrl === profileUrl) return;
-    setPending(true);
     router.push(`/${encodeProfileUrl(values.profileUrl)}`);
   };
-
-  useEffect(() => {
-    if (form.getValues().profileUrl == profileUrl) setPending(false);
-  }, [form, profileUrl]);
 
   return (
     <Form {...form}>
@@ -62,7 +57,7 @@ const ProfileUrlForm = ({ profileUrl = "" }: Props) => {
                 </FormItem>
               )}
             />
-            {pending ? (
+            {isLoading ? (
               <Button disabled>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Analysing
               </Button>

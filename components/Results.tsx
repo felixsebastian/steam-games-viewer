@@ -3,11 +3,9 @@ import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import HelpText from "./HelpText";
 import createPlaytimeSummary from "@/lib/createPlaytimeSummary";
 import GameCard from "./GameCard";
-import fetchGames from "@/lib/client/fetchGames";
 import Pagination from "./Pagination";
-import { useQuery } from "@tanstack/react-query";
-import { Loader2 } from "lucide-react";
 import { useState } from "react";
+import useResults from "@/lib/client/useResults";
 
 interface Props {
   profileUrl: string;
@@ -15,18 +13,14 @@ interface Props {
 
 const pageSize = 6;
 
-const Results = ({ profileUrl }: Props) => {
-  const { data, error } = useQuery({
-    queryFn: fetchGames(profileUrl),
-    queryKey: ["games", profileUrl],
-  });
-
+const Results = (props: Props) => {
+  const { data, error } = useResults(props.profileUrl);
   const [page, setPage] = useState(1);
 
   if (error) {
     return (
       <Alert>
-        <AlertTitle>{error.toString()}</AlertTitle>
+        <AlertTitle>{error.message}</AlertTitle>
         <AlertDescription>
           Make sure the profile URL is correct. <HelpText />
         </AlertDescription>
@@ -34,7 +28,7 @@ const Results = ({ profileUrl }: Props) => {
     );
   }
 
-  if (!data) return <Loader2 className="mr-2 h-4 w-4 animate-spin" />;
+  if (!data) return null;
 
   return (
     <div className="grid gap-4">
