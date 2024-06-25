@@ -21,7 +21,7 @@ export default function RootLayout({
       <html lang="en" className="dark">
         <body className={inter.className}>
           <main className="max-w-4xl mx-auto p-8 grid gap-8">
-            <h1 className="text-3xl font-extrabold tracking-tight lg:text-6xl">
+            <h1 className="text-3xl tracking-tight lg:text-7xl">
               Steam Library Analyser
             </h1>
             {children}
