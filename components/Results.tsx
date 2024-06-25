@@ -49,7 +49,7 @@ const Results = ({ profileUrl }: Props) => {
       <div className="grid lg:grid-cols-2 gap-4">
         {data.games
           .slice((page - 1) * pageSize, page * pageSize)
-          .map((game, i) => (
+          .map((game) => (
             <GameCard key={game.appid} game={game} />
           ))}
       </div>

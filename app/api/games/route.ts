@@ -4,7 +4,7 @@ import { ServerError } from "@/lib/errors";
 import getParamsObject from "@/lib/getParamsObject";
 import getSteamidFromProfileUrl from "@/lib/server/getSteamidFromProfileUrl";
 import steamIdSchema from "@/lib/profileUrlSchema";
-import { first, orderBy, sum } from "lodash";
+import { orderBy, sum } from "lodash";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { GetOwnedGamesResponse } from "@/lib/types";
