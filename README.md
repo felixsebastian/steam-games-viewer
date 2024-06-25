@@ -28,7 +28,7 @@ It would be nice to store the responses from steam so that we're not hammering t
 
 The steam API does not have pagination. I could have paginated the responses server-side to save bandwidth between the server and client, but this would create other problems because we'd be hitting the steam API once for each page. Instead I have implemented simple client side pagination.
 
-An alternative to caching would be to store all the steam IDs and run a chron job to keep data up to date. But I think it makes more sense to use a read-through caching approach.
+An alternative to caching would be to store known steam IDs and run a chron job to keep data up to date. But I think it makes more sense to use a read-through caching approach.
 
 ## UX
 
