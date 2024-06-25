@@ -67,7 +67,7 @@ const ProfileUrlForm = ({ profileUrl = "" }: Props) => {
           </div>
           <FormDescription>
             <HelpCard>
-              <span className="underline flex items-center gap-2 w-max">
+              <span className="underline flex items-center gap-2 w-max cursor-pointer">
                 Where can I find this? <HelpCircleIcon size={14} />
               </span>
             </HelpCard>
