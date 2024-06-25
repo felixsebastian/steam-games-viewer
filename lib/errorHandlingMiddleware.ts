@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ServerError } from "./errors";
 
 type Handler = (req: NextRequest) => Promise<NextResponse>;
 
@@ -8,7 +9,8 @@ const errorHandlingMiddleware =
       return await handler(req);
     } catch (e: unknown) {
       console.error(e);
-      return NextResponse.json({ error: "unexpected error" }, { status: 500 });
+      if (e instanceof ServerError) return e.getResponse();
+      return new ServerError().getResponse();
     }
   };
 

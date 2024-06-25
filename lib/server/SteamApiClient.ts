@@ -1,8 +1,8 @@
-import { GetOwnedGamesResponse, SteamApiResponse } from "./types";
+import { GetOwnedGamesResponse, SteamApiResponse } from "../types";
 
 const baseUrl = "http://api.steampowered.com";
 
-export class SteamApiClient {
+class SteamApiClient {
   apiKey: string;
 
   constructor(apiKey: string) {
@@ -44,3 +44,7 @@ export class SteamApiClient {
     return await response.json();
   }
 }
+
+export const steamApiClient = new SteamApiClient(
+  process.env.STEAM_API_KEY ?? "",
+);
